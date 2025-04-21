@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAN Card Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PAN Card Analyzer</h1>
+        <form method="post" enctype="multipart/form-data" class="drop-zone" id="dropZone">
+            <input type="file" name="image" id="fileInput" accept="image/*">
+            <p>Drag & drop image here or click to upload</p>
+        </form>
+        {% if image_url %}
+            <div class="preview">
+                <h2>Uploaded Image:</h2>
+                <img src="{{ url_for('uploaded_file', filename=image_url.split('/')[-1]) }}" alt="Uploaded Image">
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropZone.classList.add('hover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('hover'));
+        dropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            fileInput.files = e.dataTransfer.files;
+            dropZone.parentElement.submit();
+        });
+    </script>
+</body>
+</html>
