@@ -1,0 +1,28 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 600px;
+}
+.drop-zone {
+    border: 2px dashed #ccc;
+    padding: 30px;
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.drop-zone.hover {
+    background: #e8e8e8;
+}
+.preview img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+}
